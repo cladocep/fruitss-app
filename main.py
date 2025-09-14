@@ -2,11 +2,22 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sqlalchemy import create_engine, insert, MetaData, Table
+from dotenv import load_dotenv
+import os
+
+#Load .env file
+load_dotenv()
 
 def buat_koneksi():
     """Membuat koneksi ke database MySQL menggunakan SQLAlchemy"""
     try:
+        user = os.getenv('DB_USER')
+        password = os.getenv('DB_PASSWORD')
+        host = 'localhost'
+        db_name = 'fruitstore'
+
         # Format connection string: mysql+driver://username:password@host/database
+        engine = create_engine(f'mysql+pymysql://{user}:{password}@{host}/{db_name}')
         print("Koneksi ke database berhasil")
         return engine
     except Exception as e:
