@@ -1,5 +1,4 @@
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
 from sqlalchemy import create_engine, insert, MetaData, Table
 from dotenv import load_dotenv
@@ -186,4 +185,5 @@ def main():
         print("Koneksi database ditutup")
 
 if __name__ == "__main__":
+
     main()
